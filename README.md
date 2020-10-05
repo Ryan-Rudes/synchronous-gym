@@ -56,7 +56,7 @@ rgb_frames = env.render(mode = 'rgb_array')
 
 # Cloning and Restoring
 All this is very intuitive; most methods simply return a list of the results you would expect, one for each simulation. \
-This, too, works in the way you'd expect \
+This, too, works in the way you'd expect:
 
 - `clone_full_states` and `clone_states` returns a list of cloned states for each environment as follows:
   ```
