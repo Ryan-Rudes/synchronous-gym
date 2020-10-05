@@ -18,11 +18,11 @@ env = MultiGymWrapper(env, n = 8)
 states = env.reset()
 
 while True:
-  actions = env.action_space.sample()
-  states, rewards, terminals, infos = env.step(actions)
-  env.render()
-  if any(terminals):
-    break
+    actions = env.action_space.sample()
+    states, rewards, terminals, infos = env.step(actions)
+    env.render()
+    if any(terminals):
+        break
     
 # Close all 8 open simulations
 env.close()
@@ -53,3 +53,27 @@ rgb_frame = env.render(mode = 'rgb_array')
 # This will return a list of RGB arrays, one for the current frame of each simulation
 rgb_frames = env.render(mode = 'rgb_array')
 ```
+
+# Cloning and Restoring
+All this is very intuitive; most methods simply return a list of the results you would expect, one for each simulation. \
+Accordingly, this, too, works as you'd expect. \
+
+- `clone_full_states` and `clone_states` returns a list of cloned states for each environment as follows:
+  ```
+  def clone_full_states(self):
+      return [env.env.clone_full_state() for env in self.envs]
+      
+  def clone_states(self):
+      return [env.env.clone_state() for env in self.envs]
+  ```
+  
+- `restore_full_states` and `restore_states` work identically. They take a list of states as input.
+  ```
+  def restore_full_states(self, states):
+      for state, env in zip(states, self.envs):
+          env.env.restore_full_state(state)
+
+  def restore_states(self, states):
+      for state, env in zip(states, self.envs):
+          env.env.restore_state(state)
+  ```
