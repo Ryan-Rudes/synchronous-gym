@@ -27,3 +27,29 @@ while True:
 # Close all 8 open simulations
 env.close()
 ```
+
+When writing your implementation with the wrapper, keep in mind that the standard functions from the `gym` module will instead return a list in most cases, one result for each environment. For example, when sampling actions or taking steps, the results are lists. Thankfully, the wrapper overrides some of the components of the `gym` module, enabling methods such as `Env.step()` to take a list of actions as input.
+
+# Rendering
+With the wrapper, you can choose to either render just **one** environment, or all of them.
+
+You can perform either by simply specifying the approperiate parameter for the argument `which` of the `render` method:
+- `which = 'one'`: Renders solely the first of the set of open simulations (default)
+- `which = 'all'`: Renders all of the open simulations; this can get a bit messy
+
+Here's an example, assuming `env` is a `MultiGymWrapper` object:
+```
+# Renders solely the first of the set of open simulations
+env.render(mode = 'human')
+
+# Render all of the open simulations
+env.render(mode = 'human', which = 'all')
+
+# Rather than displaying the rendering of the first simulation,
+# this will return an RGB array of the frame which would otherwise
+# be displayed
+rgb_frame = env.render(mode = 'rgb_array')
+
+# This will return a list of RGB arrays, one for the current frame of each simulation
+rgb_frames = env.render(mode = 'rgb_array')
+```
