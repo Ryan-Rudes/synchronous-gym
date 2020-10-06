@@ -1,9 +1,10 @@
 # Synchronus Gym
 A wrapper for OpenAI gym which enables use of multiple environments in synchrony
 
-* [Example](#Example)
+- [Example](#Example)
 
 <h2 id="Example">Example</h2>
+
 To use the wrapper, simply create a gym environment as normal, than reassign the variable storing this environment to the MultiGymWrapper object as follows:
 ```python
 import gym
