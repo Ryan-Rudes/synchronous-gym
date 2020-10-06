@@ -37,7 +37,7 @@ env = gym.make("Qbert-v0")
 env = MultiGymWrapper(env, n = 8)
 states = env.reset()
 print (len(states), states[0].shape)
- >> 8 (210, 160, 3)
+>> 8 (210, 160, 3)
 ```
 
 ## Rendering
