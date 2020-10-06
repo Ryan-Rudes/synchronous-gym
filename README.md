@@ -1,5 +1,6 @@
-# Synchronus Gym
-A wrapper for OpenAI gym which enables use of multiple environments in synchrony
+# Synchronous Gym
+
+A wrapper for OpenAI's `gym` module which enables use of multiple environments in synchrony
 
 - [Example](#Example)
 - [Resetting](#Resetting)
