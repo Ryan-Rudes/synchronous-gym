@@ -73,6 +73,8 @@ env.render() # default is which='one'
 ```
 <a href="https://imgbb.com/"><img src="https://i.ibb.co/mTdh37s/window-qbert.png" alt="window-qbert" border="0"></a>
 
+Of course, the above window would actually close immediately if you run the above code sample because the script ended immediately afterwards with no frame to replace it.
+
 ## Cloning and Restoring
 All this is very intuitive; most methods simply return a list of the results you would expect, one for each simulation. \
 This, too, works in the way you'd expect:
