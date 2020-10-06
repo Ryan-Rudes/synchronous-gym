@@ -12,7 +12,7 @@ A wrapper for OpenAI's `gym` module which enables use of multiple environments i
   
 <h2 id="Example">Example</h2>
 
-To use the wrapper, simply create a gym environment as normal, than reassign the variable storing this environment to the MultiGymWrapper object as follows:
+To use the wrapper, simply create a gym environment as normal, than reassign the variable storing this environment to the `MultiGymWrapper` object as follows:
 ```python
 import gym
 from wrapper import MultiGymWrapper
