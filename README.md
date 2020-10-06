@@ -111,6 +111,17 @@ In the wrapper, you simply call the function on the object (also, the function n
 - `Env.restore_full_states()`
 - `Env.restore_states()`
 
+Here's a code sample:
+```python
+env = gym.make("Qbert-v0")
+env = MultiGymWrapper(env, n = 8)
+env.reset()
+rams = env.clone_states()
+print (rams)
+>> [array([247,  60,   6, ...,   0,   0,   0], dtype=uint8), array([247,  60,   6, ...,   0,   0,   0], dtype=uint8), array([247,  60,   6, ...,   0,   0,   0], dtype=uint8), array([247,  60,   6, ...,   0,   0,   0], dtype=uint8), array([247,  60,   6, ...,   0,   0,   0], dtype=uint8), array([247,  60,   6, ...,   0,   0,   0], dtype=uint8), array([247,  60,   6, ...,   0,   0,   0], dtype=uint8), array([247,  60,   6, ...,   0,   0,   0], dtype=uint8)]
+env.restore_states(rams)
+```
+
 ## Other
 Essentially all other functions work as you'd expect. Here are some other examples:
 ### Closing
