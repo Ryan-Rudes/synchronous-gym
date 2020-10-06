@@ -64,6 +64,15 @@ rgb_frame = env.render(mode = 'rgb_array')
 rgb_frames = env.render(mode = 'rgb_array')
 ```
 
+Here's a code sample:
+```
+env = gym.make("Qbert-v0")
+env = MultiGymWrapper(env, n = 8)
+states = env.reset()
+env.render() # default is which='one'
+```
+<a href="https://imgbb.com/"><img src="https://i.ibb.co/mTdh37s/window-qbert.png" alt="window-qbert" border="0"></a>
+
 ## Cloning and Restoring
 All this is very intuitive; most methods simply return a list of the results you would expect, one for each simulation. \
 This, too, works in the way you'd expect:
