@@ -33,8 +33,11 @@ When writing your implementation with the wrapper, keep in mind that the standar
 ## Resetting
 This is self-explanatory. Simply calling `.reset()` on your `MultiGymWrapper` object will automatically iterate through each simulation, calling `Env.reset()` on each of them. While the implementation of this method in the `gym` module returns an initial RGB array, this returns the initial RGB array for each open simulation:
 ```python
-def reset(self):
-    return [env.reset() for env in self.envs]
+env = gym.make("Qbert-v0")
+env = MultiGymWrapper(env, n = 8)
+states = env.reset()
+print (len(states), states[0].shape)
+ >> 8 (210, 160, 3)
 ```
 
 ## Rendering
