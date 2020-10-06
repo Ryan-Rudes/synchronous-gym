@@ -104,11 +104,12 @@ Note that the only difference between the wrapper class and the standard `gym` m
 - `Env.env.clone_state()`
 - `Env.env.restore_full_state()`
 - `Env.env.restore_state()`
-In the wrapper, you simply call the function on the object:
-- `Env.clone_full_state()`
-- `Env.clone_state()`
-- `Env.restore_full_state()`
-- `Env.restore_state()`
+
+In the wrapper, you simply call the function on the object (also, the function name is plural):
+- `Env.clone_full_states()`
+- `Env.clone_states()`
+- `Env.restore_full_states()`
+- `Env.restore_states()`
 
 ## Other
 Essentially all other functions work as you'd expect. Here are some other examples:
