@@ -65,7 +65,7 @@ rgb_frames = env.render(mode = 'rgb_array')
 ```
 
 Here's a code sample:
-```
+```python
 env = gym.make("Qbert-v0")
 env = MultiGymWrapper(env, n = 8)
 states = env.reset()
@@ -98,6 +98,17 @@ This, too, works in the way you'd expect:
       for state, env in zip(states, self.envs):
           env.env.restore_state(state)
   ```
+  
+Note that the only difference between the wrapper class and the standard `gym` module is how you call these functions. In `gym`:
+- `Env.env.clone_full_state()`
+- `Env.env.clone_state()`
+- `Env.env.restore_full_state()`
+- `Env.env.restore_state()`
+In the wrapper, you simply call the function on the object:
+- `Env.clone_full_state()`
+- `Env.clone_state()`
+- `Env.restore_full_state()`
+- `Env.restore_state()`
 
 ## Other
 Essentially all other functions work as you'd expect. Here are some other examples:
