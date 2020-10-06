@@ -2,7 +2,13 @@
 A wrapper for OpenAI gym which enables use of multiple environments in synchrony
 
 - [Example](#Example)
-
+- [Resetting](#Resetting)
+- [Rendering](#Rendering)
+- [Cloning and Restoring](#CloningandRestoring)
+- [Other](#Other)
+  * [Closing](#Closing)
+  * [Setting the random seed](#Settingtherandomseed)
+  
 <h2 id="Example">Example</h2>
 
 To use the wrapper, simply create a gym environment as normal, than reassign the variable storing this environment to the MultiGymWrapper object as follows:
@@ -33,7 +39,8 @@ env.close()
 
 When writing your implementation with the wrapper, keep in mind that the standard functions from the `gym` module will instead return a list in most cases, one result for each environment. For example, when sampling actions or taking steps, the results are lists. Thankfully, the wrapper overrides some of the components of the `gym` module, enabling methods such as `Env.step()` to take a list of actions as input.
 
-## Resetting
+<h2 id="Resetting">Resetting</h2>
+
 This is self-explanatory. Simply calling `.reset()` on your `MultiGymWrapper` object will automatically iterate through each simulation, calling `Env.reset()` on each of them. While the implementation of this method in the `gym` module returns an initial RGB array, this returns the initial RGB array for each open simulation:
 ```python
 env = gym.make("Qbert-v0")
@@ -43,7 +50,8 @@ print (len(states), states[0].shape)
 >> 8 (210, 160, 3)
 ```
 
-## Rendering
+<h2 id="Rendering">Rendering</h2>
+
 With the wrapper, you can choose to either render just **one** environment, or all of them.
 
 You can perform either by simply specifying the approperiate parameter for the argument `which` of the `render` method:
@@ -78,7 +86,8 @@ env.render() # default is which='one'
 
 Of course, the above window would actually close immediately if you run the above code sample because the script ended immediately afterwards with no frame to replace it.
 
-## Cloning and Restoring
+<h2 id="CloningandRestoring">Cloning and Restoring</h2>
+
 All this is very intuitive; most methods simply return a list of the results you would expect, one for each simulation. \
 This, too, works in the way you'd expect:
 
@@ -125,14 +134,18 @@ print (rams)
 env.restore_states(rams)
 ```
 
-## Other
+<h2 id="Other">Other</h2>
+
 Essentially all other functions work as you'd expect. Here are some other examples:
-### Closing
+
+<h3 id="Closing">Closing</h3>
+
 To close all of the simulations, simply call `.close()` on the `MultiGymWrapper` object:
 ```python
 env.close()
 ```
-### Setting the random seed
+<h3 id="Settingtherandomseed">Setting the random seed</h3>
+
 In the standard `gym`, you specify a non-negative integer as input. In the `MultiGymWrapper`, you also just specify one non-negative integer. It will apply to all of the open simulations.
 ```python
 seed = 42
